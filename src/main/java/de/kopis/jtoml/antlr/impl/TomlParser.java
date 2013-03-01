@@ -15,10 +15,10 @@ public class TomlParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__5=1, T__4=2, T__3=3, T__2=4, T__1=5, T__0=6, INT=7, BOOLEAN=8, WORD=9, 
+		T__5=1, T__4=2, T__3=3, T__2=4, T__1=5, T__0=6, NUMBER=7, BOOLEAN=8, WORD=9, 
 		STRING=10, DATE=11, NEWLINE=12;
 	public static final String[] tokenNames = {
-		"<INVALID>", "']'", "' '", "','", "'['", "'='", "'#'", "INT", "BOOLEAN", 
+		"<INVALID>", "']'", "' '", "','", "'['", "'='", "'#'", "NUMBER", "BOOLEAN", 
 		"WORD", "STRING", "DATE", "NEWLINE"
 	};
 	public static final int
@@ -275,7 +275,7 @@ public class TomlParser extends Parser {
 			setState(54);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 1) | (1L << 2) | (1L << 3) | (1L << 4) | (1L << 5) | (1L << 6) | (1L << INT) | (1L << BOOLEAN) | (1L << WORD) | (1L << STRING) | (1L << DATE))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 1) | (1L << 2) | (1L << 3) | (1L << 4) | (1L << 5) | (1L << 6) | (1L << NUMBER) | (1L << BOOLEAN) | (1L << WORD) | (1L << STRING) | (1L << DATE))) != 0)) {
 				{
 				{
 				setState(51);
@@ -342,7 +342,7 @@ public class TomlParser extends Parser {
 	}
 	public static class IntegerContext extends Toml_assignmentContext {
 		public TerminalNode WORD() { return getToken(TomlParser.WORD, 0); }
-		public TerminalNode INT() { return getToken(TomlParser.INT, 0); }
+		public TerminalNode NUMBER() { return getToken(TomlParser.NUMBER, 0); }
 		public IntegerContext(Toml_assignmentContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -421,7 +421,7 @@ public class TomlParser extends Parser {
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(71); match(INT);
+				setState(71); match(NUMBER);
 				}
 				break;
 
@@ -583,9 +583,9 @@ public class TomlParser extends Parser {
 
 	public static class Literal_exprContext extends ParserRuleContext {
 		public TerminalNode BOOLEAN() { return getToken(TomlParser.BOOLEAN, 0); }
-		public TerminalNode INT() { return getToken(TomlParser.INT, 0); }
 		public TerminalNode DATE() { return getToken(TomlParser.DATE, 0); }
 		public TerminalNode STRING() { return getToken(TomlParser.STRING, 0); }
+		public TerminalNode NUMBER() { return getToken(TomlParser.NUMBER, 0); }
 		public Literal_exprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -609,7 +609,7 @@ public class TomlParser extends Parser {
 			{
 			setState(134);
 			_la = _input.LA(1);
-			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << BOOLEAN) | (1L << STRING) | (1L << DATE))) != 0)) ) {
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << NUMBER) | (1L << BOOLEAN) | (1L << STRING) | (1L << DATE))) != 0)) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -682,7 +682,7 @@ public class TomlParser extends Parser {
 				setState(143); array();
 				}
 				break;
-			case INT:
+			case NUMBER:
 			case BOOLEAN:
 			case STRING:
 			case DATE:
@@ -735,7 +735,7 @@ public class TomlParser extends Parser {
 					setState(160); array();
 					}
 					break;
-				case INT:
+				case NUMBER:
 				case BOOLEAN:
 				case STRING:
 				case DATE:

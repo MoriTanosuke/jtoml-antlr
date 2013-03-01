@@ -57,7 +57,7 @@ public class TomlLoader extends TomlBaseListener {
         @Override
         public void enterInteger(IntegerContext ctx) {
             String key = ctx.WORD().getText();
-            Integer value = Integer.valueOf(ctx.INT().getText());
+            Number value = Double.valueOf(ctx.NUMBER().getText());
             put(key, value);
         }
 
